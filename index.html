@@ -15,6 +15,45 @@
     </style>
 </head>
 <body>
+    <!-- HTML body -->
+
+<script>
+
+let transcript;
+
+fetch('audioClip1.txt')
+  .then(response => response.text())
+  .then(text => {
+    transcript = text;
+  });
+
+function updateCaption() {
+
+  const currentTime = audioClip1.currentTime;
+  
+  const lines = transcript.split('\n');
+  
+  const currentLine = lines.find(line => {
+    const [startTime] = line.split(':'); 
+    return currentTime >= startTime;  
+  });
+   
+  if(currentLine) {
+    
+    const [, , text] = currentLine.split(':');
+    
+    captionText.innerHTML = text;
+    
+  } else {
+   
+    captionText.innerHTML = '';  
+  }
+
+}
+
+</script>
+
+<!-- Rest of HTML -->
     <img id="radioImage" src="radio_image1.jpg" alt="Radio Image">
 
     <audio id="audioClip1" src="audioClip1.MP3" ontimeupdate="updateCaption()"></audio>
