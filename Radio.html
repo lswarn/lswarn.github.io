@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio Website</title>
+    <style>
+        /* Add your CSS styles for the page */
+    </style>
+</head>
+<body>
+    <img id="radioImage" src="radio_image1.jpg" alt="Radio Image">
+
+    <audio id="audioClip1" src="audioClip1.MP3"></audio>
+
+    <script>
+        // Add your JavaScript code here
+        const radioImage = document.getElementById('radioImage');
+        const audioClip1 = document.getElementById('audioClip1');
+    
+        let isPlaying = false;
+    
+        radioImage.addEventListener('click', () => {
+            // Toggle the play/pause functionality
+            if (isPlaying) {
+                audioClip1.pause();
+            } else {
+                audioClip1.play();
+            }
+    
+            // Update the playing status
+            isPlaying = !isPlaying;
+        });
+    </script>
+</body>
+</html>
