@@ -3,20 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Radio Website</title>
+    <title>Radio Website with Closed Captioning</title>
     <style>
-        /* Add your CSS styles for the page */
+        #captionContainer {
+            display: none;
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
     <img id="radioImage" src="radio_image1.jpg" alt="Radio Image">
 
-    <audio id="audioClip1" src="audioClip1.MP3"></audio>
+    <audio id="audioClip1" src="audioClip1.MP3" ontimeupdate="updateCaption()"></audio>
+
+    <div id="captionContainer">
+        <p id="captionText"></p>
+    </div>
 
     <script>
-        // Add your JavaScript code here
         const radioImage = document.getElementById('radioImage');
         const audioClip1 = document.getElementById('audioClip1');
+        const captionContainer = document.getElementById('captionContainer');
+        const captionText = document.getElementById('captionText');
     
         let isPlaying = false;
     
@@ -31,6 +42,22 @@
             // Update the playing status
             isPlaying = !isPlaying;
         });
+
+        function updateCaption() {
+            // Display the caption container
+            captionContainer.style.display = 'block';
+
+            // Replace this with your actual closed caption text
+            // For simplicity, the caption is hardcoded, but you would typically fetch it dynamically
+            const currentTime = audioClip1.currentTime;
+            if (currentTime >= 0 && currentTime < 5) {
+                captionText.innerHTML = "Caption for the first 5 seconds";
+            } else if (currentTime >= 5 && currentTime < 10) {
+                captionText.innerHTML = "Caption for the next 5 seconds";
+            } else {
+                captionText.innerHTML = ""; // No caption
+            }
+        }
     </script>
 </body>
 </html>
