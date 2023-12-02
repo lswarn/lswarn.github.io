@@ -17,9 +17,16 @@
 <body>
     <!-- HTML body -->
 
-<script>
 
-let transcript;
+
+
+
+ <img id="radioImage" src="radio_image1.jpg" alt="Radio Image">
+
+    <audio id="audioClip1" src="audioClip1.MP3"></audio>
+
+    <script>
+        let transcript;
 
 fetch('audioClip1.txt')
   .then(response => response.text())
@@ -50,14 +57,6 @@ function updateCaption() {
   }
 
 }
-
-</script>
-
- <img id="radioImage" src="radio_image1.jpg" alt="Radio Image">
-
-    <audio id="audioClip1" src="audioClip1.MP3"></audio>
-
-    <script>
         const radioImage = document.getElementById('radioImage');
         const audioClip1 = document.getElementById('audioClip1');
     
